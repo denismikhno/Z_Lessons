@@ -27,6 +27,10 @@ public class Book {
         return author;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
     public static void show(Book... books) {
         Book.header();
         for (Book book : books) {
@@ -57,8 +61,13 @@ public class Book {
 
     // Переводим цену книги с заданным id из копеек в рубли-копейки
     public static String toRubKop(Book[] books, int id) {
-        // TODO Реализовать этот метод
-        return "";
+        int price = books[id - 1].getPrice();
+        if (price > 9) {
+            return "\nЦена книги с id " + id + " в рублях " + price / 100 + "," + price % 100 + " руб.";
+        } else {
+            return "\nЦена книги с id " + id + " в рублях " + price / 100 + "," + 0 + price % 100 + " руб.";
+        }
+
     }
 
     @Override
